@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactJS</title>
+    <!-- React JS는 어플리케이션이 아주 interactive(상호작용)라도록 만들어주는 라이브러리이다. -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- react-dom은 라이브러리 또는 패키지인데 모든 React element들을 HTML body에 둘 수 있도록 해준다.-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- babel은 JSX를 브라우저가 읽을 수 있는 언어로 번역해주다. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div class="root"></div>
+  </body>
+
+  <script type="text/babel">
+    // React.createElement는 태그도 만들어주고 아이디값이나 클래스, 내용 등등 넣을 수도 있다. {} 안에는 property만 들어간다.
+    // const span = React.createElement("span", {id: "cool-span"}, "hi");
+    // ===> 즉, React JS는 유저에게 보여질 내용을 컨트롤할 수 있다는 뜻이다.
+    const root = document.querySelector(".root");
+
+    // const h1 = React.createElement(
+    //   "h1",
+    //   null,
+    //   "createElement 를 사용하여 React JS로 이벤트 구현하기 -> 조금 어려운 방식"
+    // )
+
+    // const h3 = React.createElement(
+    //   "h3", 
+    //   {
+    //     onMouseEnter: () => console.log("mouseenter"),
+    //   }, 
+    //   "hi"
+    // );
+
+    // JSX를 사용하여 위 코드보다 더 보기 쉽게 만들기
+    const Title = () => (
+      <h3 id = "title" onMouseEnter={() => console.log("onMouseEnter")}>
+        hi
+      </h3>
+    );
+
+    // const btn = React.createElement(
+    //   "button", 
+    //   {
+    //     onClick: () => console.log("clicked"),
+    //     style: {
+    //       backgroundColor: "skyblue",
+    //     },
+    //   }, 
+    //   "Click me"
+    // );
+
+    // JSX를 사용하여 위 코드보다 더 보기 쉽게 만들기
+    const Button = () => (
+      <button style={{backgroundColor: "skyblue"}} onClick={() => console.log("clicked")}>
+        Click me
+      </button>
+    );
+
+    // span과 btn 둘 다 화면에 출력할 준비를 한다.
+    // const container = React.createElement("div", null, [h1, h3, btn]);
+    // const container = React.createElement("div", null, [Title, Button]);
+    
+    // 위의 코드를 JSX 형식으로 바꾼 것이다.
+    // !!!!! 우리가 만든 요소들은 무조건 첫 글자는 대문자로 적어줘야한다.!!!!! title / button이라고 적을 경우 html 태그라고 생각한다.
+    const Container = (
+    <div>
+      <Title />
+      <Button />
+    </div>
+    );
+
+
+    // ReactDOM.render 사용자에게 보여주는 코드
+    // html안에 root라는 이름을 가진 태그안에 container를 넣어준다.
+    ReactDOM.render(Container, root);
+  </script>
+ 
+</html>
