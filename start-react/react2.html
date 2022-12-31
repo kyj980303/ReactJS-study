@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactJS</title>
+    <!-- React JS는 어플리케이션이 interactive(상호작용)하도록 만들어주는 라이브러리이다. -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- react-dom은 라이브러리 또는 패키지인데 모든 React element들을 HTML body에 둘 수 있도록 해준다.-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- babel은 JSX를 브라우저가 읽을 수 있는 언어로 번역해주다. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div class="root"></div>
+  </body>
+
+  <script type="text/babel">
+    const root = document.querySelector(".root");
+    
+    function App() {
+      // React.useState(0)를 출력하면 -> [0, f] => 변하는 데이터 초기값과 초기값을 변경시킬 함수를 제공해줌
+      // React.useState()를 사용하면 UI를 새로고침하는 코드를 계속 넣어줄 필요가 없다. => 자동으로 리랜더링해줌
+      const [counter, setCounter] = React.useState(0); 
+      const onClick = () => {
+        // setCounter(counter + 1);
+        setCounter((current) => current + 1);
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App/>, root);
+  </script>
+ 
+</html>

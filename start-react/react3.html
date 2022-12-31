@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactJS</title>
+    <!-- React JS는 어플리케이션이 interactive(상호작용)하도록 만들어주는 라이브러리이다. -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <!-- react-dom은 라이브러리 또는 패키지인데 모든 React element들을 HTML body에 둘 수 있도록 해준다.-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <!-- babel은 JSX를 브라우저가 읽을 수 있는 언어로 번역해주다. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div class="root"></div>
+  </body>
+
+  <script type="text/babel">
+    const root = document.querySelector(".root");
+    
+    function App() {
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value);
+      };
+      
+      return (
+        <div>
+          <h1 className="hi">Supper Converter</h1>
+          <label htmlFor="mimutes">Minutes</label>
+          <input value={minutes} id="minutes" placehoder="Minutes" type ="number" onChange={onChange}/>
+          <h4>you want convert {minutes}</h4>
+          <label htmlFor="hours">Hours</label>
+          <input id="hours" placehoder="Hours" type="number"/>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App/>, root);
+  </script>
+ 
+</html>
