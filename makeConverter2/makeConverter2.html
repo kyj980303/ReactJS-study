@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactJS</title>
+    <!-- React JS는 어플리케이션이 interactive(상호작용)하도록 만들어주는 라이브러리이다. -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <!-- react-dom은 라이브러리 또는 패키지인데 모든 React element들을 HTML body에 둘 수 있도록 해준다.-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <!-- babel은 JSX를 브라우저가 읽을 수 있는 언어로 번역해주다. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- prop들의 타입이 제대로 들어갔는지 확인해준다. -->
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    
+    <link rel="stylesheet" href="css/makeConverter.css">
+  </head>
+  <body>
+    <div class="root"></div>
+  </body>
+
+  <!-- Props를 사용하여 변환기 만들기 -->
+  <script type="text/babel">
+    // fontSize의 기본값도 넣어줄 수 있다.
+    function Btn({text, fontSize = 16}) {
+      return <button
+        style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: "10px 20px",
+          border: 0,
+          borderRadius: 5,
+          fontSize: fontSize,
+        }}>{text}</button>;
+    }
+
+    // 버튼이 제대로된 인자값을 가졌는지 확인해주는 코드
+    Btn.propTypes = {
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
+    }
+
+    function App() {
+      return (
+        <div>
+          <Btn text="Save Changes" fontSize={18} />
+          <Btn text="continue" />
+        </div>
+      );
+    };
+
+    const root = document.querySelector(".root");
+    ReactDOM.render(<App/>, root);
+  </script>
+ 
+</html>
