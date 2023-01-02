@@ -1,6 +1,6 @@
 # React-study
 
-<h2>react status 사용법과 status를 사용해서 변환기 만들기</h2>
+<h2>react useStatus 사용법과 useStatus를 사용해서 변환기 만들기</h2>
 
 ✏️ React.useState()를 사용하는 이유<br>
 React.useState()를 사용하면 자동으로 변화된 값을 리랜더링해주기 떄문에 UI를 새로고침해주는 코드를 계속 넣어줄 필요가 없다.
